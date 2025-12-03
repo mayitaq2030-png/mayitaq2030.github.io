@@ -1,0 +1,93 @@
+Total Tickets Vs. Previous Month
+-- Total tickets by month --
+
+SELECT 
+    DATE_TRUNC('month', created_at) AS mes,
+    COUNT(*) AS total_tickets
+FROM tickets
+GROUP BY DATE_TRUNC('month', created_at)
+ORDER BY mes;
+
+-- Percentage variation current month vs. previous month --
+
+WITH monthly AS (
+    SELECT 
+        DATE_TRUNC('month', created_at) AS mes,
+        COUNT(*) AS total_tickets,
+        LAG(COUNT(*)) OVER (ORDER BY DATE_TRUNC('month', created_at)) AS total_prev
+    FROM tickets
+    GROUP BY DATE_TRUNC('month', created_at)
+)
+SELECT 
+    mes,
+    total_tickets,
+    total_prev,
+    ROUND( (total_tickets - total_prev)::numeric / total_prev * 100, 1) AS variacion_pct
+FROM monthly;
+
+Tickets by type  (Issue vs Request)
+
+SELECT 
+    type AS ticket_type,
+    COUNT(*) AS total,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct_total
+FROM tickets
+GROUP BY type;
+
+Tickets by state
+
+SELECT 
+    status,
+    COUNT(*) AS total,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct_total
+FROM tickets
+GROUP BY status
+ORDER BY total DESC;
+
+Customer satisfaction
+
+SELECT 
+    COALESCE(satisfaction, 'Unknown') AS satisfaction_level,
+    COUNT(*) AS total,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct_total
+FROM tickets
+GROUP BY COALESCE(satisfaction, 'Unknown')
+ORDER BY pct_total DESC;
+
+Severity
+
+SELECT 
+    COALESCE(severity, 'Unassigned') AS severity_level,
+    COUNT(*) AS total,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct_total
+FROM tickets
+GROUP BY COALESCE(severity, 'Unassigned')
+ORDER BY total DESC;
+
+Owner Group 
+
+SELECT 
+    owner_group,
+    COUNT(*) AS total,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct_total
+FROM tickets
+GROUP BY owner_group
+ORDER BY total DESC;
+
+Open days and backlog
+-- Calculation of open days ----
+
+SELECT
+    ticket_id,
+    created_at,
+    COALESCE(closed_at, CURRENT_DATE) AS fecha_fin,
+    DATE_PART('day', COALESCE(closed_at, CURRENT_DATE) - created_at) AS dias_abiertos
+FROM tickets;
+
+-- Backlog: open tickets more than 15 days old ---
+
+SELECT
+    COUNT(*) AS backlog_count
+FROM tickets
+WHERE status = 'Open'
+  AND DATE_PART('day', CURRENT_DATE - created_at) > 15;
