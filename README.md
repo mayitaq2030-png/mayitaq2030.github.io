@@ -1,1 +1,3 @@
-# mayitaq2030.github.io
+# Portafolio Marjorie Quintero
+I am a Data Analyst with over 10 years of experience in finance, commercial operations, and customer service, transforming complex data into strategic insights that support business growth. I have driven measurable improvements by reducing operational times by up to 30%, increasing revenue across quarterly cycles, and boosting customer retention by more than 20%. My expertise includes SQL, Python, Tableau, Power BI, and Excel, which I use to build analytical models and dynamic reports that enhance KPI accuracy and accelerate decision-making by 40%. I excel at simplifying complex information, identifying meaningful patterns, and delivering actionable insights that align with organizational goals and improve performance across multiple business areas.
+
