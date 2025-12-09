@@ -1,152 +1,86 @@
 # Help Desk Performance Monitoring Dashboard for SAAS Medical Insurance 
 
-### Executive Summary
+### Executive Summary:
 
-An interactive dashboard was designed to monitor the performance of the Help Desk over a monthly period. The report reflects a total of 1,120 tickets, showing a 7.4% decrease compared to the previous month. Workload is evenly split between Requests (50%) and Issues (50%).
-Although the resolution rate improved to 13.9%, the majority of tickets (71.7%) remain open, with a backlog reaching 55.7% of open tickets and an average age of 19.3 days. User satisfaction is concentrated in “Satisfied” and “Highly Satisfied” categories; however, 43% of responses are marked as “Unknown”, limiting the ability to accurately assess true customer experience.
-The project enables the identification of bottlenecks, prioritization by severity and technical area, and data-driven decision-making to reduce backlog, shorten resolution times, and increase end-user satisfaction.
+<p align ="justify"> Using SQL, Python, and Power BI, I analyzed RWFD’s Help Desk performance to identify service gaps, ticket resolution delays, and workload patterns affecting operational efficiency. The dashboard highlights rising backlog levels, decreasing resolution rates, and consistent login/access-related issues. These insights reveal immediate opportunities to optimize ticket handling, improve agent productivity, and reduce customer dissatisfaction.</p>
 
-### Business Problem
+Key areas of improvement:
+
+- Reduce backlog by optimizing triage and prioritization workflows.
+
+- Strengthen ticket ownership accountability across engineering groups.
+
+- Improve response and resolution times through automation and SLA monitoring.
+
+### Business Problem:
    
-The IT Support / Help Desk area needed clear answers to the following key questions:
-
-Are we resolving tickets fast enough?
-
-A high percentage of open tickets (71.7%) and a backlog representing 55.7% of open tickets indicate accumulation and potential SLA breaches.
-
-What types of incidents are driving the highest demand?
-
-Tickets are distributed across Systems, Software, Hardware, and Access/Login, with Systems and Hardware being the most frequent categories.
-
-How satisfied are our end users?
-
-Only 47% of users report being “Satisfied” or “Highly Satisfied,” while 11% are dissatisfied and a significant 43% of responses remain “Unknown,” severely limiting visibility into the true customer experience.
-
-Which technical teams are under the heaviest workload?
-
-Owner groups such as Hardware, Networking, and Security & Governance handle a substantial portion of tickets, creating potential bottlenecks and resource imbalances.
-
-Project Objective
-Reduce backlog and resolution times, improve end-user experience, and optimize resource allocation across support teams through data-driven insights and actionable KPIs.
+<p align ="justify"> The Help Desk is managing a rising volume of tickets, but metrics show declining performance. According to the dashboard, total ticket volume reached 1120, with a 13.9% resolution rate decreasing from the prior month and 71.7% of tickets remaining open, indicating operational bottlenecks .The backlog represents 55.7% of open tickets, reflecting limited capacity, slow triage processes, and inconsistent ownership across teams such as Networking, Architecture, Hardware, and Security & Governance.
+Furthermore, ticket satisfaction data reveals that 38% of responses fall into Unsatisfied or Unknown, and Access/Login issues represent a major portion of problems, suggesting systemic authentication or permission inconsistencies. These gaps reduce service quality, increase customer friction, and delay business productivity. </p>
  
-Order completion for chart (Marjorie Quintero)
+Order completion for chart 
 
-To build a clear, business-aligned dashboard, the visuals were designed and arranged in the following logical sequence:
+<img width="1470" height="771" alt="FlowChart" src="https://github.com/user-attachments/assets/8bc3beeb-c6b7-4f2e-bb9a-2bfb24fefcdb" />
 
-<img width="591" height="541" alt="Captura de pantalla 2025-12-03 172545" src="https://github.com/user-attachments/assets/4e82ff33-afda-47e8-a0e0-22cfa0cce35c" />
+#### Methodology:
 
-This layout allows the dashboard to be read like a funnel:
-volume → status → customer perception → root cause → priority → responsible team.
+- Data Extraction: SQL queries to pull ticket history, issue types, severity, owner group, and satisfaction logs.
+- Data Processing: Python (Pandas, Numpy) for cleaning, categorization, outlier detection, and aggregation.
+- Visualization: Power BI dashboard with KPIs for ticket status, severity, backlog, satisfaction, and category trends.
+- Comparative Analysis: Month-over-month change, ticket aging distribution, resolution vs. open ratios, and severity load.
 
-#### Methodology
-
-##### CRISP-DM Methodology
-
-Business Understanding:
-
-Meetings with the Support team to define objectives: reduce backlog, understand ticket severity distribution, and improve user satisfaction.
-
-Data Understanding:
-
-Review of ticket tables: fields such as date, type, status, severity, owner group, satisfaction, etc.
-
-Data Preparation:
-
-Handling of null values (especially in satisfaction and severity columns).
-Normalization of categories ( standardizing status names).
-Creation of calculated fields: days open, backlog indicator, creation month.
-
-Modeling:
-
-Development of a star-schema data model:
-Fact table: Tickets
-Dimension tables: Date, Type, Status, Severity, Issue, Owner Group, Customer
-
-Definition of key measures (KPIs) using SQL and/or DAX.
-
-Evaluation:
-
-Validation with the Support team: comparison of dashboard results against previous reports and operational reality.
-
-Deployment:
-
-Publication of the interactive dashboard in a Power BI tool .
-Short training session for supervisors on how to interpret and use the dashboard effectively.
 
 #### Skills:
 
-SQL (MySQL / SQL Server / PostgreSQL)
-Data extraction from ticket tables.
-Creation of aggregated views by month, severity, status, and owner group.
+- SQL: Filtering, joins, aggregations, SLA calculations.
 
-Data Modeling
-Design and implementation of a star-schema model with proper relationships between fact and dimension tables.
+- Python: Data cleaning, categorization, KPI computation.
 
-Power BI 
-Development of bar charts, KPI cards, line charts, donut charts, and interactive slicers/filters.
+- Power BI: DAX, relationships, advanced visuals (donuts, bar charts, trend lines).
 
-Excel / Google Sheets
-Support for initial data exploration, validation, and quick calculations.
+- Analytics: Ticket aging analysis, workload trends, customer satisfaction insights.
 
-Basic Statistics
-Calculation of percentages, month-over-month variations, and trend analysis.
-
-Data Storytelling
-Visual flow design following a logical funnel (volume → status → customer perception → root cause → priority → responsible team) and prioritization of key metrics for fast decision-making.
+- BI Storytelling: Translating operational data into actionable improvements.
 
 ### Results & Business Recommendations:
 
-<img width="904" height="489" alt="image" src="https://github.com/user-attachments/assets/613730c5-fe1b-4110-9372-7863703a17b6" />
+<p align ="justify"> The dashboard reveals high ticket volume (1120) with a large share of open cases (71.7%) and a declining resolution rate. Backlog increased to 55.7%, indicating capacity and workflow inefficiencies. Satisfaction levels are mixed, with 38% of users either unsatisfied or providing no feedback. Access/Login and Hardware issues represent the highest incident categories. Reducing backlog by 10% could significantly improve resolution times and customer satisfaction. Automating triage and enforcing SLA-driven prioritization are recommended as immediate actions.</p>
 
-#### Results
+<img width="710" height="394" alt="image" src="https://github.com/user-attachments/assets/832c3337-eff1-41bf-ae68-0a2be7edbf91" />
 
-Slight reduction in total ticket volume:
+🎯 Total tickets: 1120, down -7.4% vs PM.
 
-1,120 tickets vs 1,210 the previous month (–7.4%), indicating a modest relief in workload.
+🎯 Resolved: 13.9%, slight improvement vs PM.
 
-Improved resolution rate:
+🎯 Open: 71.7%, still critically high.
 
-13.9% resolved vs 12.1% the previous month (+6.8%), reflecting higher resolution efficiency.
+🎯 Avg. days open: 19.3, above SLA expectations.
 
-Persistent high percentage of open tickets:
+🎯 Satisfaction: 34% Highly Satisfied, 28% Satisfied, 29% Unknown, 9% Unsatisfied.
 
-71.7% still open, feeding a backlog of 55.7% of open tickets with an average age of 19.3 days.
+🎯 Most common issues: Hardware (29%), Software (22%), Access/Login (32%).
 
-User satisfaction distribution:
+🎯 Most open tickets belong to: Security & Governance (22%), Networking (22%), Architecture (21%).
 
-47% Satisfied or Highly Satisfied
-11% Unsatisfied
-43% Unknown/no response → clear gap in feedback collection.
+Because the strongest opportunities to improve Help Desk performance come from reducing backlog, increasing resolution rate, and improving cross-team ownership, I recommend:
 
-Severity & team workload insights:
+Automate ticket triage and categorization to reduce manual routing time and ensure high-severity cases are addressed first.
 
-17% High severity tickets and 32% Unassigned severity, hindering proper prioritization.
-Hardware, Networking, and Security & Governance teams carry a significant share of the workload.
+Strengthen ownership enforcement across Architecture, Networking, Hardware, and Security teams to reduce the high volume of “Unassigned” tickets.
 
-#### Business Recommendations
+Improve Access/Login reliability by addressing root causes of authentication failures, which represent one of the largest ticket categories.
 
-Reduce backlog and average days open:
+Implement SLA-driven alerts and dashboards to reduce aging tickets and improve agent accountability.
 
-Define strict SLAs by severity (e.g., High ≤ 3 days).
-Run weekly “backlog sprints” focused exclusively on closing aged tickets.
+Enhance customer communication workflows to decrease “Unknown” satisfaction responses and increase feedback rates.
 
-Improve satisfaction feedback capture:
+### Next Steps:
 
-Make a short survey mandatory upon ticket closure.
-Automate survey reminder emails.
+📌 Introduce predictive analytics to forecast ticket surges and staffing needs.
 
-Enforce mandatory severity assignment:
+📌 Build automated SLA alerts for overdue or high-severity cases.
 
-Prevent ticket creation/submission without a severity level.
-Train agents to quickly classify tickets based on impact and urgency.
+📌 Integrate Help Desk data with monitoring systems to correlate issues with outages.
 
-Balance workload across teams:
+📌 Conduct root-cause analysis on the most frequent issues (Hardware, Access/Login).
 
-Review capacity of Hardware, Networking, and Security & Governance groups.
-Consider reallocating staff or enhancing self-service tools for the most frequent incident types.
-
-Promote self-service and knowledge base:
-
-For recurring categories (Access/Login, common Software issues), develop self-service guides and a robust FAQ section to reduce new ticket creation.
-
-(Ready
+📌 Build a monthly performance report for leadership to track progress.
